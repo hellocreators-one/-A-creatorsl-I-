@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f4ef">
+  <title>Luma — AI 3 &amp; AI 4</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <svg class="icon-defs" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="spark" viewBox="0 0 24 24"><path d="M12 2.5c.7 5.3 2.2 6.8 7.5 7.5-5.3.7-6.8 2.2-7.5 7.5-.7-5.3-2.2-6.8-7.5-7.5 5.3-.7 6.8-2.2 7.5-7.5Z"/><path d="M19 15.5c.3 2.1.9 2.7 3 3-2.1.3-2.7.9-3 3-.3-2.1-.9-2.7-3-3 2.1-.3 2.7-.9 3-3Z"/></symbol>
+    <symbol id="plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="chat" viewBox="0 0 24 24"><path d="M20 11.5a7.5 7.5 0 0 1-7.5 7.5H6l-3 2v-5.2A7.5 7.5 0 1 1 20 11.5Z"/></symbol>
+    <symbol id="arrow" viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6"/></symbol>
+    <symbol id="menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+    <symbol id="trash" viewBox="0 0 24 24"><path d="M4 7h16M9 7V4h6v3m3 0-1 13H7L6 7m4 4v5m4-5v5"/></symbol>
+    <symbol id="copy" viewBox="0 0 24 24"><rect x="8" y="8" width="11" height="11" rx="2"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/></symbol>
+    <symbol id="bulb" viewBox="0 0 24 24"><path d="M9 18h6m-5 3h4m-2-18a7 7 0 0 0-4 12.7c.8.6 1 1.3 1 2.3h6c0-1 .2-1.7 1-2.3A7 7 0 0 0 12 3Z"/></symbol>
+    <symbol id="pen" viewBox="0 0 24 24"><path d="m4 20 4.5-1 10-10a2.1 2.1 0 0 0-3-3l-10 10L4 20Zm9.5-12.5 3 3"/></symbol>
+    <symbol id="code" viewBox="0 0 24 24"><path d="m8 7-5 5 5 5m8-10 5 5-5 5m-3-13-2 16"/></symbol>
+    <symbol id="compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2 5-5 2 2-5 5-2Z"/></symbol>
+  </svg>
+  <div class="app">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand"><button class="brand-mark" id="brand-mark" aria-label="Luma logo"><svg><use href="#spark"/></svg></button><div><strong>luma</strong><span>YOUR AI COMPANION</span></div><button class="mobile-close icon-button" id="close-sidebar" aria-label="Close menu">×</button></div>
+      <button class="new-chat" id="new-chat"><svg><use href="#plus"/></svg><span>New conversation</span><span class="new-shortcut">+</span></button>
+      <details class="unlock-panel">
+        <summary>Unlock AI 5</summary>
+        <form id="unlock-form">
+          <label for="unlock-code">Access code</label>
+          <input id="unlock-code" type="password" autocomplete="off" required>
+          <button type="submit">Unlock</button>
+          <p id="unlock-status" role="status">This code is not private or secure.</p>
+        </form>
+      </details>
+      <div class="sidebar-label">YOUR SPACE <span>✦</span></div>
+      <div class="nav-active"><svg><use href="#chat"/></svg> All conversations <span id="chat-count">0</span></div>
+      <div class="sidebar-label recent-label">RECENT <span>✦</span></div>
+      <div class="history" id="history"></div>
+      <div class="sidebar-bottom">
+        <div class="sidebar-note"><div class="note-icon">✳</div><div><strong>A little brilliance, daily.</strong><p>Big ideas start with a simple conversation.</p></div></div>
+        <div class="profile"><div class="profile-avatar">Y</div><div><strong>Your workspace</strong><span>Personal space</span></div><span class="profile-dots">···</span></div>
+      </div>
+    </aside>
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+    <main class="main">
+      <header class="topbar"><div class="top-left"><button class="mobile-menu icon-button" id="open-sidebar" aria-label="Open menu"><svg><use href="#menu"/></svg></button><label class="mode-label" for="model-select">Model</label><select id="model-select" aria-label="Choose AI model"><option value="ai3">AI 3 · Scratch</option><option value="ai4">AI 4 · Advanced</option></select></div><div class="top-right"><span class="status-dot"></span><span id="connection-status" role="status">Checking browser</span></div></header>
+      <section class="chat-scroll" id="chat-scroll">
+        <div class="welcome" id="welcome">
+          <div class="welcome-badge"><span>✦</span> A LITTLE SPACE FOR BIG IDEAS</div>
+          <div class="hero-icon"><svg><use href="#spark"/></svg><span class="orbit orbit-one"></span><span class="orbit orbit-two"></span></div>
+          <h1>What can I help with?</h1>
+          <p class="welcome-description">Ask a question, explore an idea, or start coding.</p>
+          <p class="model-notice" id="model-notice">AI 3 is our tiny model trained from scratch. It is experimental and often makes mistakes.</p>
+          <p class="model-credit" id="model-credit" hidden>AI 5 uses <a href="https://huggingface.co/Qwen/Qwen2.5-1.5B-Instruct">Qwen2.5-1.5B-Instruct</a> by Qwen, licensed under <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache 2.0</a>.</p>
+          <div class="suggestion-heading"><span></span> NOT SURE WHERE TO START? <span></span></div>
+          <div class="suggestions">
+            <button class="suggestion" data-prompt="Hello!"><span class="card-icon violet"><svg><use href="#bulb"/></svg></span><strong>Say hello</strong><small>Start a conversation</small><span class="card-arrow">↗</span></button>
+            <button class="suggestion" data-prompt="What is a variable?"><span class="card-icon peach"><svg><use href="#pen"/></svg></span><strong>Ask about variables</strong><small>Explore a coding term</small><span class="card-arrow">↗</span></button>
+            <button class="suggestion" data-prompt="What is a function?"><span class="card-icon blue"><svg><use href="#code"/></svg></span><strong>Ask about functions</strong><small>Try a training example</small><span class="card-arrow">↗</span></button>
+            <button class="suggestion" data-prompt="What is the Sun?"><span class="card-icon green"><svg><use href="#compass"/></svg></span><strong>Ask about the Sun</strong><small>Try a simple question</small><span class="card-arrow">↗</span></button>
+          </div>
+        </div>
+        <div class="messages" id="messages" aria-live="polite"></div>
+      </section>
+      <div class="composer-area">
+        <div class="composer-wrap">
+          <div class="composer" id="composer"><textarea id="prompt" rows="1" maxlength="30000" placeholder="Ask Luma anything..." aria-label="Message Luma"></textarea><div class="composer-bottom"><span><span class="composer-spark">✧</span> AI runs on your device</span><div class="composer-actions"><span class="key-hint">Enter to send <kbd>↵</kbd></span><button id="send" class="send-button" aria-label="Send message"><svg><use href="#arrow"/></svg></button></div></div></div><p class="disclaimer">Luma can make mistakes. Check important information. <span>Made for curious minds ✦</span></p>
+        </div>
+      </div>
+    </main>
+  </div>
+  <dialog id="secret-dialog" class="secret-dialog" aria-labelledby="secret-title">
+    <div class="secret-header"><div><span class="secret-kicker">YOU FOUND A SECRET</span><h2 id="secret-title">Made by Udit</h2></div><button id="close-secret" class="icon-button" aria-label="Close secret">×</button></div>
+    <p>A little surprise for the curious.</p>
+    <h3>Find the friendly zombie</h3>
+    <p>Pick a door to find our shy zombie friend.</p>
+    <div id="zombie-grid" class="zombie-grid" aria-label="Zombie hiding places"></div>
+    <p id="zombie-status" role="status">Choose a door to start.</p>
+    <button id="zombie-again" class="secret-again">Play again</button>
+  </dialog>
+  <script src="./app.js"></script>
+</body>
+</html>
